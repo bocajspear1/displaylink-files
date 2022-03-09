@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+command="/opt/displaylink/DisplayLinkManager"
+command_background=true
+directory="/opt/displaylink"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	after lightdm
+}
+
+start_pre() {
+	modprobe evdi
+}
